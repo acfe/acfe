@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import GitIcon from "../../common/components/GitIcon";
 
 class Index extends Component {
 
@@ -27,7 +28,7 @@ class Index extends Component {
 
         return (
             <div id="wrapper" className="wrapper">
-                hello redux acfe
+                <GitIcon/>
             </div>
         );
     }
