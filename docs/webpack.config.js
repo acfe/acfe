@@ -2,6 +2,7 @@ const path = require('path');
 
 // examples
 const examplesPages = {
+    hello_redux: 'hello_redux',
     index: 'index',
 };
 
