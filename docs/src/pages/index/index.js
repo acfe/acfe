@@ -15,6 +15,7 @@ const store = createStore(
 );
 // common
 import "../common/less/common.less";
+import "./less/index.less";
 // components
 import Index from './containers';
 
