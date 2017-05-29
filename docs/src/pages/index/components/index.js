@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import GitIcon from "../../common/components/GitIcon";
+import Header from "../../common/components/Header";
+import Footer from "../../common/components/Footer";
+import LeftMenu from "../../common/components/LeftMenu";
 
 class Index extends Component {
 
@@ -28,7 +30,14 @@ class Index extends Component {
 
         return (
             <div id="wrapper" className="wrapper">
-                <GitIcon/>
+                <Header/>
+                <div className="mainContent clearFix">
+                    <LeftMenu/>
+                    <div className="rightContent">
+                        rightContent
+                    </div>
+                </div>
+                <Footer/>
             </div>
         );
     }
