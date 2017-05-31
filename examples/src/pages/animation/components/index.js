@@ -8,7 +8,8 @@ class Index extends Component {
     }
 
     componentDidMount() {
-        Animation.play({
+        var animation = new Animation();
+        animation.play({
             aEnd: 100,
             handle: (num) => {
                 console.log(num)
