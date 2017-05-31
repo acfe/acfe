@@ -38,8 +38,7 @@ module.exports = {
                 test: /\.js$/,
                 loader: "babel-loader",
                 exclude: [
-                    path.resolve(__dirname, 'node_modules'),
-                    path.resolve(__dirname, '../src')
+                    path.resolve(__dirname, 'node_modules')
                 ]
             },
             {
@@ -56,6 +55,11 @@ module.exports = {
                 use: ['style-loader', "css-loader", "less-loader"]
             },
         ],
+    },
+    resolve: {
+        alias: {
+            'acfe': path.resolve(__dirname, '../src')
+        }
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()

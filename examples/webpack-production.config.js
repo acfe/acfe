@@ -53,8 +53,7 @@ const config = {
                 test: /\.js$/,
                 loader: "babel-loader",
                 exclude: [
-                    path.resolve(__dirname, 'node_modules'),
-                    path.resolve(__dirname, '../src')
+                    path.resolve(__dirname, 'node_modules')
                 ]
             },
             {
@@ -71,7 +70,12 @@ const config = {
                 use: ['style-loader', "css-loader", "less-loader"]
             },
         ],
-    }
+    },
+    resolve: {
+        alias: {
+            'acfe': path.resolve(__dirname, '../src')
+        }
+    },
 };
 
 module.exports = config;

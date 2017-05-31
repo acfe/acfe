@@ -3,6 +3,7 @@ const path = require('path');
 // examples
 const examplesPages = {
     index: 'index',
+    animation: 'animation',
 };
 
 //entryList
