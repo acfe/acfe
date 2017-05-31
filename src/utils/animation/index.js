@@ -5,11 +5,64 @@ class Animation {
         this.init();
     }
 
-    init () {
+    init() {
         this.setTween();
+        this.setRequestAnimationFrame();
     }
 
-    getAnimationData (aStart, aEnd, tEnd, tween, rate, tBegin) {
+    play(param) {
+        this.animating = true;
+        var tEnd = param.tEnd || 20;
+        var aStart = param.aStart || 0;
+        var aEnd = param.aEnd || 0;
+        var tween = param.tween || this.tween.Circ.easeInOut;
+        this.aData = this.getAnimationData(aStart, aEnd, tEnd, tween);
+        this.acNum = 0;
+        requestAnimationFrame(this.doAnimate.bind(this, param));
+    }
+
+    doAnimate (param) {
+        var param = param || {};
+        if (this.acNum >= this.aData.length) {
+            this.animating = false;
+            if (param.finish) {
+                param.finish();
+            }
+            return;
+        }
+        if (param.handle) {
+            param.handle(this.aData[this.acNum]);
+        }
+        this.acNum ++;
+        requestAnimationFrame(this.doAnimate.bind(this, param));
+    }
+
+    setRequestAnimationFrame() {
+        var lastTime = 0;
+        var vendors = ['webkit', 'moz'];
+        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+            window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+            window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+        }
+        if (!window.requestAnimationFrame) {
+            window.requestAnimationFrame = function(callback) {
+                var currTime = new Date().getTime();
+                var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+                var id = window.setTimeout(function() {
+                    callback(currTime + timeToCall);
+                }, timeToCall);
+                lastTime = currTime + timeToCall;
+                return id;
+            };
+        }
+        if (!window.cancelAnimationFrame) {
+            window.cancelAnimationFrame = function(id) {
+                clearTimeout(id);
+            };
+        }
+    }
+
+    getAnimationData(aStart, aEnd, tEnd, tween, rate, tBegin) {
         var aStart, aEnd, rate, tBegin, tEnd, backArr, aChange, tween;
         aStart = aStart || 0;
         aEnd   = aEnd   || aEnd == 0 ? aEnd : 1;
@@ -29,7 +82,7 @@ class Animation {
         return backArr;
     }
 
-    setTween () {
+    setTween() {
         var acTween = {
             Linear: function( t, b, c, d ) {
                 return c * t/d + b;
@@ -208,4 +261,4 @@ class Animation {
 
 }
 
-export default new Animation();
+export default Animation;
