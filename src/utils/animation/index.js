@@ -30,7 +30,7 @@ class Animation {
     }
 
     setTween () {
-        var vvTween = {
+        var acTween = {
             Linear: function( t, b, c, d ) {
                 return c * t/d + b;
             },
@@ -181,7 +181,7 @@ class Animation {
             },
             Bounce: {
                 easeIn: function( t, b, c, d ) {
-                    return c - vvTween.Bounce.easeOut( d-t, 0, c, d ) + b;
+                    return c - acTween.Bounce.easeOut( d-t, 0, c, d ) + b;
                 },
                 easeOut: function( t, b, c, d ) {
                     if ( ( t /= d ) < ( 1 / 2.75 ) ) {
@@ -196,14 +196,14 @@ class Animation {
                 },
                 easeInOut: function( t, b, c, d ) {
                     if ( t < d / 2 ) {
-                        return vvTween.Bounce.easeIn( t * 2, 0, c, d ) * .5 + b;
+                        return acTween.Bounce.easeIn( t * 2, 0, c, d ) * .5 + b;
                     } else {
-                        return vvTween.Bounce.easeOut( t * 2 - d, 0, c, d ) * .5 + c * .5 + b;
+                        return acTween.Bounce.easeOut( t * 2 - d, 0, c, d ) * .5 + c * .5 + b;
                     }
                 }
             }
         }
-        this.tween = vvTween;
+        this.tween = acTween;
     }
 
 }
