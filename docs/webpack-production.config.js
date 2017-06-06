@@ -71,7 +71,12 @@ const config = {
                 use: ['style-loader', "css-loader", "less-loader"]
             },
         ],
-    }
+    },
+    resolve: {
+        alias: {
+            'acfe': path.resolve(__dirname, '../acfe')
+        }
+    },
 };
 
 module.exports = config;

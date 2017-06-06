@@ -57,6 +57,11 @@ module.exports = {
             },
         ],
     },
+    resolve: {
+        alias: {
+            'acfe': path.resolve(__dirname, '../acfe')
+        }
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ]

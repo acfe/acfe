@@ -58,7 +58,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'acfe': path.resolve(__dirname, '../src')
+            'acfe': path.resolve(__dirname, '../acfe')
         }
     },
     plugins: [
