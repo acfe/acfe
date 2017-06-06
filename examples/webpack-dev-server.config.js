@@ -36,10 +36,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                loader: "babel-loader",
-                exclude: [
-                    path.resolve(__dirname, 'node_modules')
-                ]
+                loader: "babel-loader"
             },
             {
                 test: /\.(png|woff|woff2|eot|ttf|svg|jpg|gif)$/,
