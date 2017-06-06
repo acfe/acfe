@@ -163,9 +163,13 @@ class ImagePopViewer extends Component {
         if (this.percent > 95 && this.percent < 105) {
             this.percent = 100;
         }
+        const width = parseInt(this.picInfo.width * this.percent/100);
+        const height = parseInt(this.picInfo.height * this.percent/100);
         Object.assign(this.pic.style, {
-            width: parseInt(this.picInfo.width * this.percent/100) + 'px',
-            height: parseInt(this.picInfo.height * this.percent/100) + 'px'
+            width: width + 'px',
+            height: height + 'px',
+            marginLeft: -width/2 + 'px',
+            marginTop: -height/2 + 'px'
         });
         this.refresh();
     }
