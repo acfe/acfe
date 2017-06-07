@@ -70,7 +70,7 @@ const config = {
     },
     resolve: {
         alias: {
-            'acfe': path.resolve(__dirname, '../acfe')
+            'acfe': path.resolve(__dirname, '../src')
         }
     },
 };
